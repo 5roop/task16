@@ -13,3 +13,9 @@ Managed to generate session-level texts and metadata. Proceeding with session-le
 ## 2022-10-28T14:09:42
 
 Created session level components for Serbian.
+
+## 2022-11-02T09:40:42
+
+Serbian MPs do not always have full birth dates, sometimes only year is listed under date_of_birth! 
+
+I impute the missing values in the parties and MP tables. 
