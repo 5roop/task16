@@ -446,8 +446,8 @@ def correct_id(s: str) -> str:
     Zero padding is done to 2 places (2 -> 02).
     
     Example:
-    input: ParlaMint-SR_T4.S2.u2565
-    output: ParlaMint-SR_T04.S02.u2565
+    input: ParlaMint-RS_T4.S2.u2565
+    output: ParlaMint-RS_T04.S02.u2565
 
     Args:
         s (str): input string
