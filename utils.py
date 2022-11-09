@@ -463,9 +463,11 @@ def correct_id(s: str) -> str:
     r = p.parse(s).named
     try:
         lang, term, session, rest = r.get("lang"), int(r.get("term")), int(r.get("session")), r.get("rest")
+        lang = lang.upper()
         return f"ParlaMint-{lang}_T{term:02}.S{session:02}.{rest}"
     except:
         lang, term, session, rest = r.get("lang"), int(r.get("term")), r.get("session"), r.get("rest")
+        lang = lang.upper()
         return f"ParlaMint-{lang}_T{term:02}.S{session}.{rest}"
     
     
