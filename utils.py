@@ -443,7 +443,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
 
 def correct_id(s: str) -> str:
     """Zero-pads the terms and sessions from the ID strings.
-    Zero padding is done to 2 places (2 -> 02).
+    Zero padding is done to 2 places (2 -> 02) where able.
     
     Example:
     input: ParlaMint-RS_T4.S2.u2565
