@@ -467,3 +467,7 @@ def correct_id(s: str) -> str:
     except:
         lang, term, session, rest = r.get("lang"), int(r.get("term")), r.get("session"), r.get("rest")
         return f"ParlaMint-{lang}_T{term:02}.S{session}.{rest}"
+    
+    
+def drop_punctuation(s:str)-> str:
+    return ''.join(c for c in s if c.isalnum())
