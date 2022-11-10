@@ -267,7 +267,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
             <title type="main" xml:lang="en">Serbian parliamentary corpus ParlaMint-SR, Term {term_index}, Session {session_index}</title>
             <title type="sub" xml:lang="sr">Mandat {term_index}, Zasedanje {session_index}</title>
             <title type="sub" xml:lang="en">Term {term_index}, Session {session_index}</title>
-            <meeting n="T{term_index:02}S{session_index}" corresp="#NA" ana="#parla.term #NA.{term_index}">{term_index}. mandat, {session_index}. sjednica</meeting>
+            <meeting n="T{term_index:02}S{session_index}" corresp="#NS" ana="#parla.term #NS.{term_index}">{term_index}. mandat, {session_index}. sjednica</meeting>
             <respStmt>
             <persName ref="https://orcid.org/0000-0001-7169-9152">Nikola Ljubešić</persName>
             <resp xml:lang="en">Download and clean-up of the JSON digital source</resp>
