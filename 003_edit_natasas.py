@@ -17,6 +17,8 @@ for line in lines:
 
     if "M231" in line:
         line = line.replace("Nikolić, Dragan", "Nikolić2, Dragan")
+    if "M1278" in line:
+        line = line.replace("Nikolić, Zoran", "Nikolić2, Zoran")
     if "M1022" in line:
         line = line.replace("Stojanović-Plavšić, Snežana", "Stojanović-Plavšić2, Snežana")
     if "M248" in line:
@@ -31,6 +33,7 @@ for line in lines:
         line = line.replace("Juhas, Atila","Juhas2, Atila")
     if "M1474" in line:
         line = line.replace("Marković, Predrag","Marković2, Predrag")
+        
     newlines.append(line)
 
 with open(file, "w") as f:
