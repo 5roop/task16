@@ -133,7 +133,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
                 firstname = row["Speaker_name"].split(",")[1]
                 lastname = "".join(lastname.split())
                 firstname = "".join(firstname.split())
-                return f"#{lastname}{firstname}"
+                return f"#{drop_punctuation(lastname)}{drop_punctuation(firstname)}"
             except:
                 print("Getting errors for ", row["Speaker_name"], row["lastname"], row["firstname"])
                 return "#Unknown"
@@ -263,8 +263,8 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
 <teiHeader>
     <fileDesc>
         <titleStmt>
-            <title type="main" xml:lang="sr">Srpski parlamentarni korpus ParlaMint-SR, Mandat {term_index}, Zasedanje {session_index}</title>
-            <title type="main" xml:lang="en">Serbian parliamentary corpus ParlaMint-SR, Term {term_index}, Session {session_index}</title>
+            <title type="main" xml:lang="sr">Srpski parlamentarni korpus ParlaMint-RS-T{term_index}, Zasedanje {session_index}</title>
+            <title type="main" xml:lang="en">Serbian parliamentary corpus ParlaMint-RS-T{term_index}, Session {session_index}</title>
             <title type="sub" xml:lang="sr">Mandat {term_index}, Zasedanje {session_index}</title>
             <title type="sub" xml:lang="en">Term {term_index}, Session {session_index}</title>
             <meeting n="T{term_index:02}S{session_index}" corresp="#NS" ana="#parla.term #NS.{term_index}">{term_index}. mandat, {session_index}. sjednica</meeting>
@@ -315,6 +315,8 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
         <sourceDesc>
             <bibl>
             <title type="main" xml:lang="en">Minutes of the National Assembly of Serbia</title>
+            <idno type="URI" subtype="business">https://otvoreniparlament.rs/</idno>
+            <idno type="URI" subtype="parliament">http://www.parlament.gov.rs/</idno>
             <date from="{min_isostr}" to="{max_isostr}">{min_isostr} - {max_isostr}</date>
             </bibl>
         </sourceDesc>
@@ -359,7 +361,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
             <name>Peter Rupnik</name>Compile from source</change>
     </revisionDesc>
 </teiHeader>"""
-
+    country_code = {"hr":"HR", "sr":"RS"}.get(data_language_code.casefold())
     if data_language_code.casefold().startswith("sr"):
         stringheader = stringheader_srb
     else:
@@ -367,7 +369,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
     TEI = Element('TEI')
     TEI.set("xmlns", "http://www.tei-c.org/ns/1.0")
     TEI.set("xml:lang", data_language_code.casefold())
-    TEI.set("xml:id", f"ParlaMint-{data_language_code}_T{term_index:02}_S{session_index}")
+    TEI.set("xml:id", f"ParlaMint-{country_code}_T{term_index:02}S{session_index}")
     TEI.set("ana", "#parla.term #reference")
     TEI.append(XML(stringheader))
 
