@@ -214,7 +214,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
             <title type="main" xml:lang="en">Minutes of the National Assembly of the Republic of Croatia</title>
             <idno type="URI" subtype="business">https://parlametar.hr/</idno>
             <idno type="URI" subtype="parliament">http://www.sabor.hr/</idno>
-            <date from="{min_isostr}" to="{max_isostr}">{min_isostr} - {max_isostr}</date>
+
             </bibl>
         </sourceDesc>
     </fileDesc>
@@ -249,7 +249,7 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
             <name type="address">Trg sv. Marka 6</name>
             <name type="city">Zagreb</name>
             <name type="country" key="HR">Croatia</name>
-            <date  from="{min_isostr}" to="{max_isostr}" ana="#parla.session"> {min_isostr} - {max_isostr}</date>
+
             </setting>
         </settingDesc>
     </profileDesc>
