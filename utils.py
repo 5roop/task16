@@ -44,10 +44,10 @@ def split_sentences(s: str) -> List[str]:
     except:
         import classla
         try:
-            pipeline = classla.Pipeline("hr", processors="tokenize")
+            pipeline = classla.Pipeline("sr", processors="tokenize")
         except FileNotFoundError:
-            classla.download('hr')
-            pipeline = classla.Pipeline("hr", processors="tokenize")
+            classla.download('sr')
+            pipeline = classla.Pipeline("sr", processors="tokenize")
     finally:
         results = pipeline.process(s)
     return [i.text for i in results.sentences]
