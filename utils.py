@@ -263,8 +263,8 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
 <teiHeader>
     <fileDesc>
         <titleStmt>
-            <title type="main" xml:lang="sr">Srpski parlamentarni korpus ParlaMint-RS-T{term_index}, Zasedanje {session_index}</title>
-            <title type="main" xml:lang="en">Serbian parliamentary corpus ParlaMint-RS-T{term_index}, Session {session_index}</title>
+            <title type="main" xml:lang="sr">Srpski parlamentarni korpus ParlaMint-RS-T{term_index}, Zasedanje {session_index} [ParlaMint SAMPLE]</title>
+            <title type="main" xml:lang="en">Serbian parliamentary corpus ParlaMint-RS-T{term_index}, Session {session_index} [ParlaMint SAMPLE]</title>
             <title type="sub" xml:lang="sr">Mandat {term_index}, Zasedanje {session_index}</title>
             <title type="sub" xml:lang="en">Term {term_index}, Session {session_index}</title>
             <meeting n="T{term_index:02}S{session_index}" corresp="#NS" ana="#parla.term #NS.{term_index}">{term_index}. mandat, {session_index}. sjednica</meeting>
@@ -383,6 +383,8 @@ def construct_TEI(pickled_file: Union[str, Path], out_file: Union[str, Path],
     title = None
     word_count = 0
     for i, row in merged.iterrows():
+        if len(row["sentences"]) == 0:
+            continue
         u = SubElement(div, "u")
         who = get_who_field(row)
         if not "unknown" in who.casefold():
